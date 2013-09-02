@@ -1,0 +1,58 @@
+body {
+	margin: 0px;
+	border: 0px;
+	background: #E7EBF2;
+}
+
+.tabela_pedigree {
+	margin-left: 89px;
+	margin-top: 10px;
+}
+
+.fonte-tabela {
+	text-align: center;
+}
+
+.horario-campo-data {
+	margin-left: 27%;
+}
+
+.horario-campo-hora {
+	margin-left: 27%;
+}
+
+.horario-campo-qtd {
+	margin-left: 1%;
+}
+
+.alimentar-horario {
+	border: solid;
+	border-width: 1px;
+	width: 373px;
+	height: 109px;
+	float: left;
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+.alimentar-imediatamente {
+	border: solid;
+	border-width: 1px;
+	width: 340px;
+	float: right;
+	margin-right: 47px;
+	margin-top: 3%;
+}
+
+.teste {
+	width: 810px;
+	height: 125px;
+}
+
+.botao-alimentar-imediatamente {
+	margin-left: 28%;
+}
+
+.botao-cadastro-alimentacao {
+	margin-left: 28%;
+}
