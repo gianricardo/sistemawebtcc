@@ -13,13 +13,13 @@ import br.com.sistemaWebTCC.jdbc.UsuarioDAO;
 /**
  * Servlet implementation class CadastroServlet
  */
-public class CadastroServlet extends HttpServlet {
+public class EditarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CadastroServlet() {
+    public EditarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,17 +39,11 @@ public class CadastroServlet extends HttpServlet {
 	}
 	
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
-		//buscando os parâmetros no request
-		//int usuarioID = Integer.parseInt(request.getParameter("usuarioID"));
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");		
 		String nome = request.getParameter("nome");
+		int id = Integer.parseInt(request.getParameter("id"));
 		//int alimentadorID = Integer.parseInt(request.getParameter("alimentadorID"));
-		int adm=0;
-		if(request.getParameter("adm").toString() == "on"){
-			adm = 1;
-		}
 		
 		//monta um objeto
 		Usuario usuarioObj = new Usuario();
@@ -57,19 +51,20 @@ public class CadastroServlet extends HttpServlet {
 		usuarioObj.setUsuario(usuario);	
 		usuarioObj.setSenha(senha);
 		usuarioObj.setNome(nome);
+		usuarioObj.setUsuarioID(id);
 		//usuarioObj.setAlimentadorID(alimentadorID);
-		usuarioObj.setAdm(adm);
 		
 		//Salva o contato
 		UsuarioDAO dao = null;
 		try {
 			dao = new UsuarioDAO();
-			dao.cadastraUsuario(usuarioObj);
+			dao.editarUsuario(usuarioObj);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect(request.getContextPath()+"/resources/sistema.html");
+		response.sendRedirect(request.getContextPath()+"/resources/sistema.html");			
+
 	}
 
 }

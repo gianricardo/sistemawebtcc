@@ -10,16 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.sistemaWebTCC.entity.Usuario;
 import br.com.sistemaWebTCC.jdbc.UsuarioDAO;
 
+import com.google.gson.Gson;
+
 /**
  * Servlet implementation class CadastroServlet
  */
-public class CadastroServlet extends HttpServlet {
+public class ConsultarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CadastroServlet() {
+    public ConsultarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,36 +42,31 @@ public class CadastroServlet extends HttpServlet {
 	
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-		//buscando os parâmetros no request
-		//int usuarioID = Integer.parseInt(request.getParameter("usuarioID"));
-		String usuario = request.getParameter("usuario");
-		String senha = request.getParameter("senha");		
-		String nome = request.getParameter("nome");
-		//int alimentadorID = Integer.parseInt(request.getParameter("alimentadorID"));
-		int adm=0;
-		if(request.getParameter("adm").toString() == "on"){
-			adm = 1;
-		}
-		
-		//monta um objeto
-		Usuario usuarioObj = new Usuario();
-		//usuarioObj.setUsuarioID(usuarioID);
-		usuarioObj.setUsuario(usuario);	
-		usuarioObj.setSenha(senha);
-		usuarioObj.setNome(nome);
-		//usuarioObj.setAlimentadorID(alimentadorID);
-		usuarioObj.setAdm(adm);
-		
-		//Salva o contato
-		UsuarioDAO dao = null;
+		UsuarioDAO dao;
 		try {
 			dao = new UsuarioDAO();
-			dao.cadastraUsuario(usuarioObj);
-		} catch (Exception e) {
+			Usuario usuario = dao.consultarUsuario(Integer.parseInt(request.getSession().getAttribute("id").toString()));
+
+			String json = new Gson().toJson(usuario);
+			//Padrão de devolução dos dados Json{"id":1, "nome":"dieison", "adm":1}
+		    response.setContentType("application/json");
+		    response.setCharacterEncoding("UTF-8");
+		    try {
+				response.getWriter().write(json);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		    
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect(request.getContextPath()+"/resources/sistema.html");
 	}
 
 }

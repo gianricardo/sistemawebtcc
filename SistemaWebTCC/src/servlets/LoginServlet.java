@@ -1,10 +1,13 @@
 package servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.com.sistemaWebTCC.entity.Usuario;
 import br.com.sistemaWebTCC.jdbc.*;
 
 
@@ -52,16 +55,13 @@ public class LoginServlet extends HttpServlet {
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 		UsuarioDAO dao = new UsuarioDAO();
-		System.out.println("#################################");
-		System.out.println(usuario);
-		System.out.println(senha);
-		//boolean usuarioValido = dao.validaUsuario(usuario);
-		//boolean usuarioValido = validaUsuario(usuario, senha);
-		//System.out.println("TESTEEE33: "+usuarioValido);
+		Usuario usuarioValido = dao.validaUsuario(usuario, senha);
+		
 		//comunicacao com o banco de dados
-		//if(usuarioValido == true){
-		if(usuario.equalsIgnoreCase("deiwys")){
-			request.getSession().setAttribute("usuario", usuario);
+		if(usuarioValido != null){
+			request.getSession().setAttribute("usuario", usuarioValido.getUsuario());
+			request.getSession().setAttribute("id", usuarioValido.getUsuarioID());
+			request.getSession().setAttribute("usuarioAdm", usuarioValido.getAdm());
 			response.sendRedirect(request.getContextPath()+"/resources/sistema.html");
 		}else{
 			response.sendRedirect(request.getContextPath()+"/index.html");

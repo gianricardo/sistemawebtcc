@@ -36,13 +36,17 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		Object usuario = httpRequest.getSession().getAttribute("usuario");
-		System.out.println("FILTER = "+usuario);
+		String usuario=null;
+		if(httpRequest.getSession().getAttribute("usuario")!=null){
+			usuario = httpRequest.getSession().getAttribute("usuario").toString();
+		}
+		//Se não houver usuário válido na sessão retorno para o index
 		if(usuario == null || usuario.toString().equals("")){
 			httpResponse.sendRedirect(httpRequest.getContextPath()+"/index.html");
 			return;
+		}else{
+			chain.doFilter(request, response);
 		}
-		chain.doFilter(request, response);
 	}
 
 	/**
