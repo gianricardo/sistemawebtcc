@@ -6,10 +6,31 @@ $(document).ready(function() {
 		$(this).removeClass("li-mouse-over");
 	});
 	
-	$("#menu-ul a").click(function( e ){  
-        e.preventDefault();  
-        var href = $( this ).attr('href');  
-        $("#content").load(href);  
+	$("#menu-ul a").click(function( e ){ 
+		var href = $( this ).attr('href');  
+		if(href != "../logout.jsp"){
+			e.preventDefault();  
+			$("#content").load(href);  
+		}
     });
+	
+	SISTEMA = new Object();
+	SISTEMA.ajax = new Object();
+	SISTEMA.ajax.post = function(){
+		$.ajax({
+			 type: "POST",
+			 url: "../VerificaAdm",
+			 success: function (data) {
+				 if(data.usuarioAdm == "1"){
+					 $("#cadastroAdm").css("display","block");
+			 	 }
+			 },
+			 error: function (rest) {
+				 alert("erro na chamada ajax");		   
+			 }
+		}
+		);
+	};
+	SISTEMA.ajax.post();
 });
 

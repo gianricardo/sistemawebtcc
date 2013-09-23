@@ -45,11 +45,15 @@ body {
 }
 
 .menu-ul li {
-	width: 90px;
+	width: 115px;
 	height: 45px;
 	text-align: center;
 	float: left;
 	border-right: solid 1px #CCCCCC;
+}
+
+.cadastroAdm{
+	display: none;
 }
 
 .menu-ul a {
