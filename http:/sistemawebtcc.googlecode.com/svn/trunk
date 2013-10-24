@@ -1,0 +1,108 @@
+#include <SPI.h>
+#include <Ethernet.h>
+#include <Ultrasonic.h>
+#include <Stepper.h>
+
+#define passos  100
+#define echoPin 6 //Pino 6 recebe o pulso do echo
+#define trigPin 5 //Pino 5 envia o pulso para gerar o echo
+
+boolean flag1 = true;
+boolean flag2 = true;
+boolean incoming = 0;
+String tipoAlimentacao = "";
+String quantidadeRacao = "";
+int qtdRacao = 0;
+
+Ultrasonic ultrasonic(5,6);
+Stepper small_stepper(passos, 8, 10, 9, 11);
+
+byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDA, 0x02 };
+IPAddress ip(192,168,1,3);
+EthernetServer server(80);
+
+void setup()
+{
+  pinMode(2, OUTPUT);
+  Ethernet.begin(mac, ip);
+  server.begin();
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  EthernetClient client = server.available();
+  if (client) {
+    boolean currentLineIsBlank = true;
+    while (client.connected()) {
+      if (client.available()) {
+        char c = client.read();
+        
+        if(incoming && c == ' '){ 
+          incoming = 0;
+        }
+        
+        if(c == '?' && flag1 == true){ 
+          incoming = 1;
+          char c = client.read();
+          tipoAlimentacao.concat(c);
+          flag1 = false;
+        }
+        if(c == '=' && flag2 == true){
+          incoming = 1;
+          for(int x=0; x<3; x++){
+            char c = client.read();
+            quantidadeRacao.concat(c); 
+          }
+          qtdRacao = atoi(quantidadeRacao.c_str());
+          flag2 = false;
+        }
+        
+          
+        if (c == '\n') {
+          currentLineIsBlank = true;
+        } 
+        else if (c != '\r') {
+          currentLineIsBlank = false;
+        }
+      }
+    }
+    
+    int x = verifica_nivel_racao();
+    
+    //Se x=1, pote não está cheio
+    if(x == 1){
+      
+      int qtdDeVoltas = 0;
+      qtdDeVoltas = qtdRacao / 100;
+      
+      //1024 para uma volta completa
+      qtdDeVoltas = qtdDeVoltas*1024;
+      small_stepper.step(qtdDeVoltas);
+    }
+    delay(1);
+    client.stop();
+  }
+}
+
+int verifica_nivel_racao(){
+  
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+
+    int distancia = (ultrasonic.Ranging(CM));
+
+    delay(1000);
+    
+    //Pote com espaço
+    if(distancia > 7){
+      return 1;
+    }
+    //Pote cheio
+    else if(distancia <= 7){
+      return 0;
+    }
+}
