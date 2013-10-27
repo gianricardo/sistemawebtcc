@@ -10,7 +10,6 @@
 boolean flag1 = true;
 boolean flag2 = true;
 boolean incoming = 0;
-String tipoAlimentacao = "";
 String quantidadeRacao = "";
 int qtdRacao = 0;
 
@@ -41,13 +40,7 @@ void loop()
         if(incoming && c == ' '){ 
           incoming = 0;
         }
-        
-        if(c == '?' && flag1 == true){ 
-          incoming = 1;
-          char c = client.read();
-          tipoAlimentacao.concat(c);
-          flag1 = false;
-        }
+
         if(c == '=' && flag2 == true){
           incoming = 1;
           for(int x=0; x<3; x++){
