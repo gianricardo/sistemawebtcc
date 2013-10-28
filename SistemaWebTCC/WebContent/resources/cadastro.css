@@ -38,9 +38,9 @@
 }
 
 .botao-cadastrar {
-	width: 100px;
+	width: 121px;
 	height: 47px;
-	margin-left: 660px;
+	margin-left: 360px;
 	margin-top: 15px;
 	border-radius: 9px;
 }
@@ -50,3 +50,4 @@
 	text-align: right;
 	margin-top: 3px;
 }
+

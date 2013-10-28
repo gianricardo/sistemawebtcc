@@ -2,15 +2,23 @@
 <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
 <div class="teste">
 	<div class="alimentar-horario">
-		<form name="input" action="" method="post">
+		<form name="input" action="192.168.1.3" method="get">
 			<div class="horario-campo-hora">
-				Primeiro Horário: <input class="" type="text" name="hora1"></input><br>
-				Segundo Horário: <input class="" type="text" name="hora2"></input><br>
-				Terceiro Horário: <input class="" type="text" name="hora3"></input><br>
-				Quarto Horário: <input class="" type="text" name="hora4"></input><br>
+				<div class="horario1">
+					Primeiro Horário: <input class="" type="text" name="hora1"></input><br>
+				</div>
+				<div class="horario2">
+					Segundo Horário: <input class="" type="text" name="hora2"></input><br>
+				</div>
+				<div class="horario3">
+					Terceiro Horário: <input class="" type="text" name="hora3"></input><br>
+				</div>
+				<div class="horario4">
+					Quarto Horário: <input class="" type="text" name="hora4"></input><br>
+				</div>
 			</div>
 			<div class="horario-campo-qtd">
-				Quantidade de ração: <input class="" type="text" name="1">gramas</input><br>
+				Quantidade de ração: <input class="" type="text" name="1">(gramas)<br>
 			</div>
 			<input class="botao-cadastro-alimentacao" type="submit"
 				value="Cadastrar Alimentação">
@@ -18,12 +26,12 @@
 	</div>
 
 	<div class="alimentar-imediatamente">
-		<form name="input" action="" method="get">
+		<form id="input" name="input" action="" method="get">
 			<div class="horario-campo-qtd-imediatamente">
-				Quantidade de ração: <input class="" type="text" name="2">gramas<br>
+				Quantidade de ração: <input class="" type="text" name="2">(gramas)<br>
 			</div>
 			<!-- <input class="botao-alimentar-imediatamente" type="submit" value="Alimentar Imediatamente"> -->
-			<input class="botao-alimentar-imediatamente" type="submit" value="Alimentar Imediatamente">
+			<input class="botao-alimentar-imediatamente" id="botao-enviar" type="button" onClick="SISTEMA.ajax.get();" value="Alimentar Imediatamente">
 		</form>
 
 	</div>
