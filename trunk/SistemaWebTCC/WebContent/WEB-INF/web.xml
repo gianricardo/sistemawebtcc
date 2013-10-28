@@ -68,7 +68,7 @@
     <servlet-name>ConsultarUsuario</servlet-name>
     <url-pattern>/ConsultarUsuario</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>EditarUsuario</display-name>
     <servlet-name>EditarUsuario</servlet-name>

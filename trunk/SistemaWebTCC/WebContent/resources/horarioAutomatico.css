@@ -18,7 +18,7 @@ body {
 }
 
 .horario-campo-hora {
-	margin-left: 27%;
+	margin-left: 0%;
 }
 
 .horario-campo-qtd {
@@ -53,6 +53,26 @@ body {
 	margin-left: 28%;
 }
 
+.horario-campo-qtd-imediatamente{
+	width: 344px;
+}
+
 .botao-cadastro-alimentacao {
 	margin-left: 28%;
+}
+
+.horario1{
+	margin-left: 8%;
+}
+
+.horario2{
+	margin-left: 7%;
+}
+
+.horario3{
+	margin-left: 8%;
+}
+
+.horario4{
+	margin-left: 10%;
 }

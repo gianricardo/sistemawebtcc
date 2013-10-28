@@ -9,6 +9,7 @@ public class Configuracao {
 	private Timestamp hora3;
 	private Timestamp hora4;
 	private int qtdGramas;
+	
 	public Timestamp getHora1() {
 		return hora1;
 	}
