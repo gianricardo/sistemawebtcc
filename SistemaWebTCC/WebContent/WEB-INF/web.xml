@@ -78,4 +78,14 @@
     <servlet-name>EditarUsuario</servlet-name>
     <url-pattern>/EditarUsuario</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RotinaServlet</display-name>
+    <servlet-name>RotinaServlet</servlet-name>
+    <servlet-class>servlets.RotinaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RotinaServlet</servlet-name>
+    <url-pattern>/RotinaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

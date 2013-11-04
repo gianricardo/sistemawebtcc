@@ -32,5 +32,19 @@ $(document).ready(function() {
 		);
 	};
 	SISTEMA.ajax.post();
+	
+	SISTEMA.ajax.iniciarRotina = function(){
+		$.ajax({
+			 type: "POST",
+			 url: "../RotinaServlet",
+			 success: function (data) {
+				 alert("Rotina iniciada!");
+			 },
+			 error: function (rest) {
+				 alert("Erro ao iniciar a rotina!");		   
+			 }
+		}
+		);
+	};
 });
 
