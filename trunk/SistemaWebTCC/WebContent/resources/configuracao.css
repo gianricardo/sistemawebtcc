@@ -18,5 +18,17 @@
 	font-size:150%;
 	float: left;
 	margin-left: 9%;
-	margin-top: -20%;
+	margin-top: -25%;
+}
+
+.config-rotina {
+	font-size:150%;
+	float: left;
+	margin-left: 9%;
+	margin-top: -7%;
+	display: none;
+}
+
+.config-rotina a{
+	cursor: pointer;
 }

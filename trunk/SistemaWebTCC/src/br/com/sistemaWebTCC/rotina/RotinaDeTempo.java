@@ -6,13 +6,6 @@ import java.util.TimerTask;
 
 public class RotinaDeTempo implements Runnable{
 	
-	public static void main(String[] args) {
-   
-            RotinaDeTempo rotina = new RotinaDeTempo();
-            Thread t = new Thread(rotina);
-            t.run();
-            
-        }
 	public void run(){
 		    long delay = 1000;   // delay de 1 seg.
 		    long interval = 5000;  // intervalo de 1 min.
