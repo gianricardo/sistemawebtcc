@@ -69,7 +69,7 @@ private Connection connection;
 		public Usuario consultarUsuario(int id){
 			String sql = "select * from usuario where usuarioID="+id;
 			try{
-				// prepared statement para inserção
+				// prepared statement para o select
 				PreparedStatement stmt = connection.prepareStatement(sql);
 				
 				// seta os valores
@@ -100,8 +100,8 @@ private Connection connection;
 				p.setString(1, usuario.getNome());
 				p.setString(2, usuario.getUsuario());
 				p.setString(3, usuario.getSenha());
-				System.out.println("csdfsdfsdfdsdfsd");
 				p.executeUpdate();
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return false;

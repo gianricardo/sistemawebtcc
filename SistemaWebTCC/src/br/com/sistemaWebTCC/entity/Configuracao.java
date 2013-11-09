@@ -1,44 +1,48 @@
 package br.com.sistemaWebTCC.entity;
 
-import java.sql.Timestamp;
-
-
 public class Configuracao {
-	private Timestamp hora1;
-	private Timestamp hora2;
-	private Timestamp hora3;
-	private Timestamp hora4;
-	private int qtdGramas;
+	private int usuarioID;
+	private String hora1;
+	private String hora2;
+	private String hora3;
+	private String hora4;
+	private String qtdGramas;
 	
-	public Timestamp getHora1() {
+	public String getHora1() {
 		return hora1;
 	}
-	public void setHora1(Timestamp hora1) {
+	public void setHora1(String hora1) {
 		this.hora1 = hora1;
 	}
-	public Timestamp getHora2() {
+	public String getHora2() {
 		return hora2;
 	}
-	public void setHora2(Timestamp hora2) {
+	public void setHora2(String hora2) {
 		this.hora2 = hora2;
 	}
-	public Timestamp getHora3() {
+	public String getHora3() {
 		return hora3;
 	}
-	public void setHora3(Timestamp hora3) {
+	public void setHora3(String hora3) {
 		this.hora3 = hora3;
 	}
-	public Timestamp getHora4() {
+	public String getHora4() {
 		return hora4;
 	}
-	public void setHora4(Timestamp hora4) {
+	public void setHora4(String hora4) {
 		this.hora4 = hora4;
 	}
-	public int getQtdGramas() {
+	public String getQtdGramas() {
 		return qtdGramas;
 	}
-	public void setQtdGramas(int qtdGramas) {
+	public void setQtdGramas(String qtdGramas) {
 		this.qtdGramas = qtdGramas;
+	}
+	public int getUsuarioID() {
+		return usuarioID;
+	}
+	public void setUsuarioID(int usuarioID) {
+		this.usuarioID = usuarioID;
 	}
 
 }

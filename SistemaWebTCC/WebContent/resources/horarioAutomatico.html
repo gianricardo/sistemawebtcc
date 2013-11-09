@@ -3,7 +3,8 @@
 <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
 <div class="teste">
 	<div class="alimentar-horario">
-		<form name="input" action="192.168.1.3" method="get">
+	
+		<form name="input" action="../ConfigServlet" method="post">
 			<div class="horario-campo-hora">
 				<div class="horario1">
 					Primeiro Horário: <input class="" type="text" name="hora1"></input><br>
@@ -19,11 +20,12 @@
 				</div>
 			</div>
 			<div class="horario-campo-qtd">
-				Quantidade de ração: <input class="" type="text" name="1">(gramas)<br>
+				Quantidade de ração: <input class="" type="text" name="qtdRacao">(gramas)<br>
 			</div>
 			<input class="botao-cadastro-alimentacao" type="submit"
 				value="Cadastrar Alimentação">
 		</form>
+		
 	</div>
 
 	<div class="alimentar-imediatamente">
