@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,16 +35,13 @@ public class ConfigServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// buscando os parâmetros no request
-		/*Timestamp hora1 = request.getParameter("hora1");
-		Timestamp hora2 = request.getParameter("hora2");
-		Timestamp hora3 = request.getParameter("hora3");
-		Timestamp hora4 = request.getParameter("hora4");
-		Timestamp horaExemplo = new Timestamp(new Date("00 00 0000 12 00 00").getTime());
-		
-		
-		//1 é quantidade de ração nos horários programados
-		int qtsRacao = request.getParameter("1");
+		String hora1 = request.getParameter("hora1");
+		String hora2 = request.getParameter("hora2");
+		String hora3 = request.getParameter("hora3");
+		String hora4 = request.getParameter("hora4");
+		String qtsRacao = request.getParameter("qtdRacao");
 		
 
 		// monta um objeto
@@ -57,11 +52,12 @@ public class ConfigServlet extends HttpServlet {
 		config.setHora3(hora1);
 		config.setHora4(hora1);
 		config.setQtdGramas(qtsRacao);
-*/
+
 		// Salva o contato
 		ConfiguracaoDAO dao = null;
 		try {
 			dao = new ConfiguracaoDAO();
+			dao.cadastraConfiguracao(config);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
